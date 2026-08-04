@@ -56,11 +56,19 @@ h2{
 .title{font-style:italic;color:var(--muted);margin:0 0 .7rem;font-size:.95rem}
 
 ul.items{list-style:none;margin:0;padding:0}
-ul.items > li{position:relative;padding-left:1.05rem;margin-bottom:.55rem}
+ul.items > li{position:relative;padding-left:1.05rem;margin-bottom:.75rem}
+ul.items > li:last-child{margin-bottom:0}
 ul.items > li::before{content:"—";position:absolute;left:0;color:var(--muted)}
 ul.items strong{font-weight:700}
 ul.items p{margin:0}
-ul.items p + p{margin-top:.45rem}
+
+ul.detail{list-style:none;margin:.25rem 0 0;padding:0}
+ul.detail li{position:relative;padding-left:.95rem;margin-bottom:.15rem}
+ul.detail li:last-child{margin-bottom:0}
+ul.detail li::before{
+  content:"";position:absolute;left:.1rem;top:.62em;
+  width:3px;height:3px;background:var(--muted);border-radius:50%;
+}
 
 .line{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.1rem 1rem}
 .line h3{font-weight:700;font-size:1.05rem;margin:0}
@@ -104,25 +112,60 @@ ul.items p + p{margin-top:.45rem}
 
     <ul class="items">
       <li>
-        <p><strong>Made AI a platform capability instead of a per-feature project.</strong> Built a multi-provider LLM agent framework (Gemini, OpenAI, Anthropic, xAI) with 16 swappable personas and 35+ actions, so shipping a new AI feature became a configuration change rather than a new integration. It now powers content moderation, review generation, video understanding, and natural-language database querying — features that previously had no owner and no budget to build individually.</p>
+        <p><strong>Made AI a platform capability instead of a per-feature project.</strong></p>
+        <ul class="detail">
+          <li>Built a multi-provider LLM agent framework (Gemini, OpenAI, Anthropic, xAI) with 16 swappable personas and 35+ actions.</li>
+          <li>Shipping a new AI feature became a configuration change, not a new integration.</li>
+          <li>Now powers content moderation, review generation, video understanding, and natural-language database querying — features that previously had no owner and no budget to build individually.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Solved the cold-start problem that stalls community platforms.</strong> Used the agent framework to run persona-driven bots that seed reviews, ratings, and discussion, so new visitors land on an active community instead of empty pages — the difference between a platform users bounce from and one they sign up for. Read-only database access for every agent means autonomous bots can never corrupt production data.</p>
+        <p><strong>Solved the cold-start problem that stalls community platforms.</strong></p>
+        <ul class="detail">
+          <li>Ran persona-driven bots on the agent framework to seed reviews, ratings, and discussion.</li>
+          <li>New visitors land on an active community instead of empty pages — the difference between a platform users bounce from and one they sign up for.</li>
+          <li>Read-only database access for every agent means autonomous bots can never corrupt production data.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Replaced Mailchimp with an in-house CRM, removing the SaaS bill and its send quotas.</strong> Built a config-driven campaign engine for push, email, and in-app messaging with opt-out, quiet-hours, and deduplication guardrails. Marketing now launches or tunes a campaign with a single database change instead of a code deploy, cutting campaign turnaround from days to minutes and freeing engineering from campaign work entirely.</p>
+        <p><strong>Replaced Mailchimp with an in-house CRM, removing the SaaS bill and its send quotas.</strong></p>
+        <ul class="detail">
+          <li>Built a config-driven campaign engine for push, email, and in-app messaging.</li>
+          <li>Opt-out, quiet-hours, and deduplication guardrails enforced centrally rather than per campaign.</li>
+          <li>Marketing launches or tunes a campaign with a single database change instead of a code deploy — engineering is out of the campaign loop entirely.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Built the content engine the product depends on — with zero added headcount.</strong> A distributed pipeline across GCP VMs discovers, downloads, AI-matches, compresses, and publishes anime episodes: <strong>18,000+ full-length videos (~15 TB)</strong> processed through AI tokenization and highlight clipping, coordinated by a PostgreSQL-backed job queue. Merging 6 external sources (MyAnimeList, AniList, TMDB, LiveChart, Kitsu, AnimeThemes) through a priority-merge ingestion system produced one of the few anime catalogs anywhere with per-episode rating data — a differentiator competitors do not have.</p>
+        <p><strong>Built the content engine the product depends on — with zero added headcount.</strong></p>
+        <ul class="detail">
+          <li>Distributed pipeline across GCP VMs discovers, downloads, AI-matches, compresses, and publishes anime episodes, coordinated by a PostgreSQL-backed job queue.</li>
+          <li><strong>18,000+ full-length videos (~15 TB)</strong> processed through AI tokenization and highlight clipping.</li>
+          <li>Priority-merge ingestion across 6 external sources (MyAnimeList, AniList, TMDB, LiveChart, Kitsu, AnimeThemes) produced one of the few anime catalogs anywhere with per-episode rating data — a differentiator competitors do not have.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Fixed search so Japanese-speaking users could actually find titles.</strong> Rebuilt search on CJK-aware PostgreSQL full-text indexing, lifting Japanese-title relevance from <strong>24 to 94 out of 100</strong> on the internal benchmark and retiring a paid Meilisearch cluster while holding sub-100ms queries — better results at lower cost.</p>
+        <p><strong>Fixed search so Japanese-speaking users could actually find titles.</strong></p>
+        <ul class="detail">
+          <li>Rebuilt search on CJK-aware PostgreSQL full-text indexing.</li>
+          <li>Japanese-title relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark.</li>
+          <li>Retired the separate Meilisearch cluster while holding sub-100ms queries — better results, one less system to pay for and operate.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Kept the platform up as it grew, and kept the team shipping daily.</strong> Owned production incidents end-to-end — burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the largest titles (<strong>64,000+ ratings</strong>) — parallelizing SQL workloads to cut aggregation latency. Introduced zero-downtime Cloud Build/Cloud Run releases smoke-tested at 0% traffic before cutover, plus Sentry and a daily automated pipeline-health report to Slack that moved failure detection from weeks to hours.</p>
+        <p><strong>Kept the platform up as it grew, and kept the team shipping daily.</strong></p>
+        <ul class="detail">
+          <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the largest titles (<strong>64,000+ ratings</strong>).</li>
+          <li>Parallelized SQL workloads to cut rating-aggregation latency.</li>
+          <li>Zero-downtime Cloud Build / Cloud Run releases, smoke-tested at 0% traffic before cutover, let the team ship daily without user-facing outages.</li>
+          <li>Sentry plus a daily automated pipeline-health report to Slack moved failure detection from weeks to hours.</li>
+        </ul>
       </li>
       <li>
-        <p><strong>Scaled the team's output beyond my own.</strong> Designed the event-driven Pub/Sub architecture and OpenAPI contracts the other services build against, and mentored software engineering interns through design reviews and code reviews until they were delivering features independently.</p>
+        <p><strong>Scaled the team's output beyond my own.</strong></p>
+        <ul class="detail">
+          <li>Designed the event-driven Pub/Sub architecture and OpenAPI contracts the other services build against, keeping user-facing requests fast by offloading heavy work to async consumers.</li>
+          <li>Mentored software engineering interns through design and code reviews until they were delivering features independently.</li>
+        </ul>
       </li>
     </ul>
   </article>
