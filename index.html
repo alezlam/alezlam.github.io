@@ -104,33 +104,25 @@ ul.items p + p{margin-top:.45rem}
 
     <ul class="items">
       <li>
-        <p><strong>Backend Services.</strong> Designed, built, and operate 5 production Node.js/TypeScript microservices (Express, TSOA/OpenAPI, PostgreSQL) behind animeoshi.com, an anime community and social platform — owning features end-to-end from design through deployment and production support.</p>
-        <p>Architected event-driven communication across services with Google Cloud Pub/Sub, keeping user-facing requests fast by offloading heavy work (notifications, rating aggregations, content processing) to async consumers with zero data loss.</p>
+        <p><strong>Made AI a platform capability instead of a per-feature project.</strong> Built a multi-provider LLM agent framework (Gemini, OpenAI, Anthropic, xAI) with 16 swappable personas and 35+ actions, so shipping a new AI feature became a configuration change rather than a new integration. It now powers content moderation, review generation, video understanding, and natural-language database querying — features that previously had no owner and no budget to build individually.</p>
       </li>
       <li>
-        <p><strong>AI Agent Platform.</strong> Architected a multi-provider LLM agent framework (Gemini, OpenAI, Anthropic, xAI) with 16 switchable personas and 35+ actions — models and personas swappable per request — including tool-using agents that explore the database and call functions autonomously. Powers automated content moderation, review generation, video understanding, and natural-language database querying, with safety guardrails such as read-only database access so AI agents can never corrupt production data.</p>
+        <p><strong>Solved the cold-start problem that stalls community platforms.</strong> Used the agent framework to run persona-driven bots that seed reviews, ratings, and discussion, so new visitors land on an active community instead of empty pages — the difference between a platform users bounce from and one they sign up for. Read-only database access for every agent means autonomous bots can never corrupt production data.</p>
       </li>
       <li>
-        <p><strong>Lifecycle Messaging (CRM).</strong> Built a config-driven campaign engine delivering push, email, and in-app notifications with opt-out, quiet-hours, and deduplication guardrails — the team can now launch or tune a campaign with a single database change instead of waiting on a code deploy.</p>
+        <p><strong>Replaced Mailchimp with an in-house CRM, removing the SaaS bill and its send quotas.</strong> Built a config-driven campaign engine for push, email, and in-app messaging with opt-out, quiet-hours, and deduplication guardrails. Marketing now launches or tunes a campaign with a single database change instead of a code deploy, cutting campaign turnaround from days to minutes and freeing engineering from campaign work entirely.</p>
       </li>
       <li>
-        <p><strong>Video AI Ingestion Pipeline.</strong> Automated content acquisition end-to-end with a distributed pipeline across GCP VMs that discovers, downloads, AI-matches, compresses, and publishes anime episodes — processing 18,000+ full-length videos (~15 TB) through AI tokenization and highlight clipping, with concurrent workers safely coordinated through a PostgreSQL-backed job queue.</p>
+        <p><strong>Built the content engine the product depends on — with zero added headcount.</strong> A distributed pipeline across GCP VMs discovers, downloads, AI-matches, compresses, and publishes anime episodes: <strong>18,000+ full-length videos (~15 TB)</strong> processed through AI tokenization and highlight clipping, coordinated by a PostgreSQL-backed job queue. Merging 6 external sources (MyAnimeList, AniList, TMDB, LiveChart, Kitsu, AnimeThemes) through a priority-merge ingestion system produced one of the few anime catalogs anywhere with per-episode rating data — a differentiator competitors do not have.</p>
       </li>
       <li>
-        <p><strong>Data Pipelines.</strong> Consolidated data from 6 external sources (MyAnimeList, AniList, TMDB, LiveChart, Kitsu, AnimeThemes) with a priority-merge ingestion system, building one of the few anime catalogs anywhere with per-episode rating data.</p>
+        <p><strong>Fixed search so Japanese-speaking users could actually find titles.</strong> Rebuilt search on CJK-aware PostgreSQL full-text indexing, lifting Japanese-title relevance from <strong>24 to 94 out of 100</strong> on the internal benchmark and retiring a paid Meilisearch cluster while holding sub-100ms queries — better results at lower cost.</p>
       </li>
       <li>
-        <p><strong>CI/CD &amp; Deployment.</strong> Implemented zero-downtime deployments on Google Cloud Build and Cloud Run — every release is smoke-tested at 0% traffic before cutover, letting the team ship daily without user-facing outages.</p>
+        <p><strong>Kept the platform up as it grew, and kept the team shipping daily.</strong> Owned production incidents end-to-end — burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the largest titles (<strong>64,000+ ratings</strong>) — parallelizing SQL workloads to cut aggregation latency. Introduced zero-downtime Cloud Build/Cloud Run releases smoke-tested at 0% traffic before cutover, plus Sentry and a daily automated pipeline-health report to Slack that moved failure detection from weeks to hours.</p>
       </li>
       <li>
-        <p><strong>Search, Performance &amp; Reliability.</strong> Rebuilt search with CJK-aware PostgreSQL full-text indexing, lifting Japanese-title search relevance from 24 to 94 out of 100 on the internal benchmark; previously deployed and tuned Meilisearch for sub-100ms queries.</p>
-        <p>Diagnosed and resolved production incidents end-to-end — API rate-limit errors under burst traffic, out-of-memory crashes, connection-pool leaks, and query timeouts on the platform's largest titles (64,000+ ratings) — cutting aggregation latency by parallelizing SQL workloads.</p>
-      </li>
-      <li>
-        <p><strong>Monitoring &amp; Observability.</strong> Instrumented all services with Sentry and structured Google Cloud Logging, and built a daily automated pipeline-health report to Slack so failures surface within hours instead of weeks.</p>
-      </li>
-      <li>
-        <p><strong>Intern Mentorship.</strong> Mentored software engineering interns through design discussions and code reviews, bringing them to independent feature delivery.</p>
+        <p><strong>Scaled the team's output beyond my own.</strong> Designed the event-driven Pub/Sub architecture and OpenAPI contracts the other services build against, and mentored software engineering interns through design reviews and code reviews until they were delivering features independently.</p>
       </li>
     </ul>
   </article>
@@ -143,10 +135,10 @@ ul.items p + p{margin-top:.45rem}
     <p class="title">Data Scientist Intern</p>
 
     <ul class="items">
-      <li><p><strong>Data Analysis.</strong> Performed customer and course segmentation on a given dataset with RFM analysis in Python to determine which segments were remediable.</p></li>
-      <li><p><strong>Data Visualization.</strong> Prepared financial, operational, and economies-of-scale charts against employee salary using Python visualization libraries and Dash.</p></li>
-      <li><p><strong>Unit Testing.</strong> Performed REST API testing with JMeter, simulating 30+ concurrent users against GET, POST, and DELETE methods.</p></li>
-      <li><p><strong>Data Simulation.</strong> Simulated thousands of rows of realistic data with the Faker library, following the Pareto distribution and supervisor-specified domain constraints.</p></li>
+      <li><p><strong>Told the business which customers were worth saving.</strong> Segmented customers and courses with RFM analysis in Python, separating recoverable accounts from churn so retention effort went where it could still change the outcome.</p></li>
+      <li><p><strong>Replaced manual reporting with a live dashboard.</strong> Built financial, operational, and economies-of-scale views in Dash, giving management figures on demand instead of on request.</p></li>
+      <li><p><strong>Proved the API held up before customers found out.</strong> Load-tested REST endpoints with JMeter at 30+ concurrent users across GET, POST, and DELETE, surfacing failures in staging rather than production.</p></li>
+      <li><p><strong>Unblocked development that had no data to work with.</strong> Generated thousands of rows of realistic Pareto-distributed test data with Faker, letting analysis proceed before real data was available.</p></li>
     </ul>
   </article>
 </section>
