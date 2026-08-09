@@ -144,9 +144,9 @@ ul.detail li::before{
         </ul>
       </li>
       <li>
-        <p><strong>Rebuilt the search engine to cut cost and remove a third-party dependency.</strong></p>
+        <p><strong>Rebuilt the search engine in-house to remove a third-party dependency.</strong></p>
         <ul class="detail">
-          <li>Moved search off a Meilisearch cluster running on its own compute instance and onto CJK-aware PostgreSQL full-text indexing inside the existing database — <strong>eliminating 100% of dedicated search infrastructure cost</strong>, with no new machine to host, monitor, or keep in sync.</li>
+          <li>Moved search off a self-hosted Meilisearch instance and onto CJK-aware PostgreSQL full-text indexing inside the existing database — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
           <li>Quality improved rather than degraded in the move: Japanese-title relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark, so users searching in Japanese now find titles that previously returned nothing.</li>
           <li>Held sub-100ms query latency on the consolidated stack, matching the dedicated search service it replaced.</li>
           <li>Search indexing now shares the database's transactional guarantees, eliminating the stale-index and re-sync failure modes of the external engine.</li>
