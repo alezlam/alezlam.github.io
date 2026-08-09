@@ -151,17 +151,12 @@ ul.detail li::before{
         </ul>
       </li>
       <li>
-        <p><strong>Kept the platform up as it grew, and kept the team shipping daily.</strong></p>
+        <p><strong>Scaled backend services as the user base grew, on a watched budget.</strong></p>
         <ul class="detail">
-          <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the heaviest records (<strong>64,000+ ratings</strong> on a single entity).</li>
-          <li>Parallelized SQL workloads to cut aggregation latency.</li>
+          <li>Designed the event-driven Pub/Sub architecture and OpenAPI contracts the other services build against, absorbing growth by offloading heavy work to async consumers instead of scaling up the request path.</li>
+          <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the heaviest records (<strong>64,000+ ratings</strong> on a single entity), parallelising SQL workloads to cut aggregation latency.</li>
+          <li>Monitored infrastructure spend per service alongside latency, so scaling decisions were made against their actual cost rather than discovered on the monthly bill.</li>
           <li>Zero-downtime Cloud Build / Cloud Run releases, smoke-tested at 0% traffic before cutover, let the team ship daily without user-facing outages.</li>
-        </ul>
-      </li>
-      <li>
-        <p><strong>Scaled the team's output beyond my own.</strong></p>
-        <ul class="detail">
-          <li>Designed the event-driven Pub/Sub architecture and OpenAPI contracts the other services build against, keeping user-facing requests fast by offloading heavy work to async consumers.</li>
           <li>Mentored software engineering interns through design and code reviews until they were delivering features independently.</li>
         </ul>
       </li>
