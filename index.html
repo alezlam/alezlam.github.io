@@ -145,7 +145,7 @@ ul.detail li::before{
       <li>
         <p><strong>Rebuilt the search engine in-house to remove a third-party dependency.</strong></p>
         <ul class="detail">
-          <li>Moved search off a self-hosted Meilisearch instance and onto PostgreSQL full-text indexing inside the existing database, with custom tokenisation for non-Latin scripts — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
+          <li>Moved search off a self-hosted Meilisearch instance and onto PostgreSQL full-text indexing inside the existing database, with custom tokenisation for non-Latin scripts.</li>
           <li>Quality improved rather than degraded in the move: multilingual search relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark, surfacing results that previously returned nothing.</li>
           <li>Held sub-100ms query latency on the consolidated stack, matching the dedicated search service it replaced.</li>
         </ul>
