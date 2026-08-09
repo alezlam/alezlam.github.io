@@ -115,7 +115,7 @@ ul.detail li::before{
         <p><strong>Made AI a platform capability instead of a per-feature project.</strong></p>
         <ul class="detail">
           <li>Built a multi-provider LLM agent framework (Gemini, OpenAI, Anthropic, xAI) with 16 swappable personas and 35+ actions.</li>
-          <li>Shipping a new AI feature became a configuration change, not a new integration.</li>
+          <li>Implemented a ReAct loop in the agent core engine, letting agents reason over a task, call a tool, read the result, and iterate until the task is finished rather than answering in a single pass.</li>
           <li>Now powers content moderation, review generation, video understanding, and natural-language database querying — features that previously had no owner and no budget to build individually.</li>
         </ul>
       </li>
@@ -146,7 +146,7 @@ ul.detail li::before{
       <li>
         <p><strong>Rebuilt the search engine in-house to remove a third-party dependency.</strong></p>
         <ul class="detail">
-          <li>Moved search off a self-hosted Meilisearch instance and onto CJK-aware PostgreSQL full-text indexing inside the existing database — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
+          <li>Moved search off a self-hosted Meilisearch instance and onto PostgreSQL full-text indexing inside the existing database, with tokenisation tuned for Japanese and Chinese titles — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
           <li>Quality improved rather than degraded in the move: Japanese-title relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark, so users searching in Japanese now find titles that previously returned nothing.</li>
           <li>Held sub-100ms query latency on the consolidated stack, matching the dedicated search service it replaced.</li>
           <li>Search indexing now shares the database's transactional guarantees, eliminating the stale-index and re-sync failure modes of the external engine.</li>
@@ -158,7 +158,6 @@ ul.detail li::before{
           <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the largest titles (<strong>64,000+ ratings</strong>).</li>
           <li>Parallelized SQL workloads to cut rating-aggregation latency.</li>
           <li>Zero-downtime Cloud Build / Cloud Run releases, smoke-tested at 0% traffic before cutover, let the team ship daily without user-facing outages.</li>
-          <li>Sentry plus a daily automated pipeline-health report to Slack moved failure detection from weeks to hours.</li>
         </ul>
       </li>
       <li>
