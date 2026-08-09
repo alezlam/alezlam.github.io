@@ -137,16 +137,16 @@ ul.detail li::before{
       <li>
         <p><strong>Full-stack AI data infrastructure ownership.</strong></p>
         <ul class="detail">
-          <li>Distributed pipeline across GCP VMs discovers, downloads, compresses, and publishes anime episodes, coordinated by a PostgreSQL-backed job queue.</li>
-          <li>AI-driven data integrity: every file is matched to the correct series and episode automatically, so the catalog stays trustworthy at a volume no one could verify by hand.</li>
+          <li>Distributed pipeline across GCP VMs discovers, downloads, compresses, and publishes multimedia data, coordinated by a PostgreSQL-backed job queue.</li>
+          <li>AI-driven data integrity: automated verification during ingestion reconciles records arriving from multiple independent sources, so the catalog stays trustworthy at a volume no one could check by hand.</li>
           <li><strong>18,000+ full-length videos (~15 TB)</strong> processed through AI tokenization and highlight clipping.</li>
         </ul>
       </li>
       <li>
         <p><strong>Rebuilt the search engine in-house to remove a third-party dependency.</strong></p>
         <ul class="detail">
-          <li>Moved search off a self-hosted Meilisearch instance and onto PostgreSQL full-text indexing inside the existing database, with tokenisation tuned for Japanese and Chinese titles — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
-          <li>Quality improved rather than degraded in the move: Japanese-title relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark, so users searching in Japanese now find titles that previously returned nothing.</li>
+          <li>Moved search off a self-hosted Meilisearch instance and onto PostgreSQL full-text indexing inside the existing database, with custom tokenisation for non-Latin scripts — retiring a standalone service the team had to host, monitor, upgrade, and keep in sync.</li>
+          <li>Quality improved rather than degraded in the move: multilingual search relevance rose from <strong>24 to 94 out of 100</strong> on the internal benchmark, surfacing results that previously returned nothing.</li>
           <li>Held sub-100ms query latency on the consolidated stack, matching the dedicated search service it replaced.</li>
           <li>Search indexing now shares the database's transactional guarantees, eliminating the stale-index and re-sync failure modes of the external engine.</li>
         </ul>
@@ -154,8 +154,8 @@ ul.detail li::before{
       <li>
         <p><strong>Kept the platform up as it grew, and kept the team shipping daily.</strong></p>
         <ul class="detail">
-          <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the largest titles (<strong>64,000+ ratings</strong>).</li>
-          <li>Parallelized SQL workloads to cut rating-aggregation latency.</li>
+          <li>Owned production incidents end-to-end: burst-traffic rate limiting, out-of-memory crashes, connection-pool leaks, and query timeouts on the heaviest records (<strong>64,000+ ratings</strong> on a single entity).</li>
+          <li>Parallelized SQL workloads to cut aggregation latency.</li>
           <li>Zero-downtime Cloud Build / Cloud Run releases, smoke-tested at 0% traffic before cutover, let the team ship daily without user-facing outages.</li>
         </ul>
       </li>
