@@ -80,7 +80,11 @@ ul.detail li::before{
   body{font-size:10.5pt;line-height:1.4}
   .wrap{max-width:none;padding:0}
   a{color:#000;border:0}
-  .job,ul.items > li,section{break-inside:avoid}
+  /* Only keep small blocks intact. Applying this to .job/section makes the
+     whole multi-page Work Experience block unbreakable, which pushes it past
+     page 1 and prints a blank first page. */
+  ul.items > li,ul.detail li{break-inside:avoid}
+  h2,h3,.job-head{break-after:avoid}
   h1{font-size:22pt}
   .job-head h3,.line h3{font-size:12pt}
 }
